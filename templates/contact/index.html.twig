@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+<h1>Liste de mes contacts</h1>
+<table class="table table-dark">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Nom</th>
+      <th scope="col">Prenom</th>
+      <th scope="col">Téléphone</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for contact in contacts %}
+    <tr>
+      <th scope="row">{{ contact.id }} </th>
+      <td>{{ contact.nom }}</td>
+      <td>{{ contact.prenom }}</td>
+      <td>{{ contact.telephone }}</td>
+      <td>
+        <a href="{{ path('contact_show', {id: contact.id}) }}"type="button" class="btn btn-success">Afficher</a>
+        <a href="{{ path('contact_edit', {id: contact.id}) }}"type="button" class="btn btn-warning">Modifier</a>
+        <a href="{{ path('contact_delete', {id: contact.id}) }}"type="button" class="btn btn-danger">Supprimer</a>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}
